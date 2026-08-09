@@ -16,7 +16,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          errors: result.error.flatten().fieldErrors,
+          errors: z.treeifyError(result.error),
         },
         { status: 400 }
       );
